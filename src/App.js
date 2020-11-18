@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './components/Home';
 import SearchBar from './components/SearchBar';
 
 export class App extends Component {
@@ -11,9 +10,9 @@ export class App extends Component {
       <div>
         <Navbar />
           {/* Dynamic Content */}
-          <div className="container">
+          {/* <div className="container-fluid"> */}
               <SearchBar />
-          </div>
+          {/* </div> */}
           {/* ---------------End dynamic content ------------*/}
         {/* Start Footer */}
         <Footer />

@@ -11,40 +11,40 @@ export class Results extends Component {
         super(props)
     }
     render() {
-        if(this.props.category == ""){
+        if(this.props.type_document == ""){
             return (
                 <div>
                     <Home />
                 </div>
             )
-        }else if(this.props.category == "memoire"){
+        }else if(this.props.type_document == "memoire"){
             return (
                 <div>
-                    <MemoiresResults category="memoire"/>
+                    <MemoiresResults type_document="memoire"/>
                 </div>
             )
-        }else if(this.props.category == "pfe"){
+        }else if(this.props.type_document == "pfe"){
             return (
                 <div>
-                    <PfeResult category="pfe"/>
+                    <PfeResult type_document="pfe"/>
                 </div>
             )
-        }else if(this.props.category == "livre"){
+        }else if(this.props.type_document == "livre"){
             return (
                 <div>
-                    <LivresResult category ="livre"/>
+                    <LivresResult type_document ="livre"/>
                 </div>
             )
-        }else if(this.props.category == 'article_de_recherche'){
+        }else if(this.props.type_document == 'article_de_recherche'){
             return (
                 <div>
-                    <ArticleDeRechercheResult category = "article_de_recherche"/>
+                    <ArticleDeRechercheResult type_document = "article_de_recherche"/>
                 </div>
             )
-        }else if(this.props.category == "allCategory"){
+        }else if(this.props.type_document == "allDocument"){
             return (
                 <div>
-                    <AllCategoryResult category="allCategory" />
+                    <AllCategoryResult type_document="allDocument" />
                 </div>
             )
         }
