@@ -35,10 +35,10 @@ export class Results extends Component {
                     <LivresResult type_document ="livre"/>
                 </div>
             )
-        }else if(this.props.type_document == 'article_de_recherche'){
+        }else if(this.props.type_document == 'article'){
             return (
                 <div>
-                    <ArticleDeRechercheResult type_document = "article_de_recherche"/>
+                    <ArticleDeRechercheResult type_document = "article"/>
                 </div>
             )
         }else if(this.props.type_document == "allDocument"){

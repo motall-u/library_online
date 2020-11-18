@@ -15,7 +15,7 @@ export class SearchBar extends Component {
         this.state = {
              type_document: "allDocument",
              input:"",
-             searchResult: [],
+             searchResult: {},
         }
 
       
@@ -42,14 +42,30 @@ export class SearchBar extends Component {
 
     submitForm = (event) =>{
         event.preventDefault();
-        const test = this.state.input
+        var input_value = this.state.input
         //GET my_index/_search?source_content_type=application/json&source={"query":{"geo_bounding_box":{"location":{"top_left":{"lat":42,"lon":-72},"bottom_right":{"lat":40,"lon":-74}}}}}
-        axios
-            .get(`http://localhost:9200/bibliotheque/document_document/_search?q=${test}~4`)
+        if(this.state.type_document == "allDocument"){
+            axios
+            .get(`http://localhost:9200/bibliotheque/document_document/_search?q=${input_value}~4`)
             .then((res) => {
                 console.log(this.state.type_document)
-                console.log(res.data.hits.hits)
+                this.setState({
+                    searchResult: res.data.hits
+                })
+                console.log(res.data.hits)
             })
+        }else{
+            axios
+            .get(`http://localhost:9200/bibliotheque/document_document/_search?q=${input_value}~4&q=type=${this.state.type_document}`)
+            .then((res) => {
+                console.log(this.state.type_document)
+                this.setState({
+                    searchResult: res.data.hits
+                })
+                console.log(res.data.hits)
+            })
+        }
+        
     }
 
     
@@ -68,7 +84,7 @@ export class SearchBar extends Component {
                                     <option value="livre">Livres</option>
                                     <option  value="pfe">PFE</option>
                                     <option value="memoire">Mémoires</option>
-                                    <option value="article_de_recherche">Articles</option>
+                                    <option value="article">Articles</option>
                                 </select>
                             </div>
                             <div className="form-group col-md-7 ">
@@ -83,7 +99,7 @@ export class SearchBar extends Component {
                         </form>            
                     
                     {/* End Search BAR */}
-                    <Results type_document={ this.state.type_document }/>
+                    <Results type_document={ this.state.type_document } search_doc_result ={ this.state.searchResult }/>
                 </div>
 
             </div>
